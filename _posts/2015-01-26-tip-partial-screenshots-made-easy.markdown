@@ -25,7 +25,7 @@ However, windows already has a tool for taking partial snapshots of the screen, 
 
 We just need a quick way to open it. So, hit the windows key to open the start menu and type Snipping Tool, right click on it, and select properties. Focus in Shortcut key, and hit a key combination to open it. Mac has a similar tool already bound to Cmd-Shift-4, so I bound the snippet tool to Ctrl-Shift-4.
 
-[![SnippingTool](assets/SnippingTool-212x300.png)](images/_posts/SnippingTool.png)
+[![SnippingTool](/assets/SnippingTool-212x300.png)](/assets/SnippingTool-212x300.png)
 
 Now, I just hit Ctrl-Shift-4, and the screen goes partially opaque. I highlight a section of the screen, and it's automatically put in my clipboard. It's also opened in the snipping tool, but I just close it without saving changes (Alt-F4). Then paste the partial screenshot in my email or document.
 

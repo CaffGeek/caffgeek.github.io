@@ -21,8 +21,8 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-excerpt: !ruby/object:Hpricot::Doc
-  options: {}
+
+  
 ---
 <p>I've been doing a lot of work with excel uploads lately to allow clients to easily upload data to their systems.  Not the best approach mind you, but they know how to use excel...so what can you do?</p>
 <p>What I have worked out is a multi step process to import the excel file to the database and validate the contents to a reasonable degree.  I have these all written into some custom classes and use IOC and DI to handle workflow so that writing subsequent uploads is a trivial task, and the majority of code is simply the validation and transformation files (XSDs, XSLs, and Stored Procs)</p>

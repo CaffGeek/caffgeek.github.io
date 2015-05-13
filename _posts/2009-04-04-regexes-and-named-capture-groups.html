@@ -18,8 +18,8 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-excerpt: !ruby/object:Hpricot::Doc
-  options: {}
+
+  
 ---
 <div class="snap_preview">
 <p>Not everyone knows about named capture groups, not everyone knows about regexes for that matter, but for those that do, capture groups are great, they allow us to grab portions of our regular expression match, and use them in our application.  The problem is, as your regex gets more and more complicated, if you still rely on the index of the capture group, to get the data you want, it can change as we make modifications, and be hard to find, and introduce undesired behaviours when you set a variable to capture group 7, when it’s now capture group 8…but you didn’t notice.  Yeah, it should be caught in testing, but it’s nearly 2009, we shouldn’t be referencing data by numbers when we can reference it by name.</p>

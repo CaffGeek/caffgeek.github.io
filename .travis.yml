@@ -1,6 +1,3 @@
 language: ruby
-rvm: 2.1
-notifications:
-  email: false
-cache: bundler
-sudo: false
+rvm:
+- 2.1

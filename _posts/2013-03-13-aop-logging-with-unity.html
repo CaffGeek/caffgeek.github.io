@@ -20,8 +20,8 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-excerpt: !ruby/object:Hpricot::Doc
-  options: {}
+
+  
 ---
 <p>I couple months ago I was tasked with adding logging to an application we are developing.  Now, the typical way people handle this, is with a call to "<code>Logger.Log</code>" wherever they want to log that an activity took place.  However, this relies on the programmers memory, and while the original team members may know and remember to keep up this practice.  The new guy on the team may not.  And this is where this technique really starts to break down.  Logging is a cross cutting feature.  We can't keep all the code in one place, because it's called from all over the application.  </p>
 <p>The solution, is AOP (<a href="http://en.wikipedia.org/wiki/Aspect-oriented_programming" title="Aspect Oriented Programming" target="_blank">Aspect Oriented Programming</a>). Since we were using <a href="http://unity.codeplex.com/releases/view/31277" title="Unity" target="_blank">Unity</a>, it's quite simple to intercept calls based on an interface. There is more it's capable of, but the issue I had was I couldn't find a simple, "hello world" example. Everything felt the need to over complicate the example.</p>

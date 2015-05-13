@@ -1,0 +1,45 @@
+---
+layout: post
+title: 'TIP: Always run Visual Studio as an Administrator'
+date: 2014-12-04 17:42:35.000000000 -06:00
+categories:
+- ".NET"
+- Development
+- TIP
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+author:
+  login: gibble
+  email: chad.hurd@gcsquared.com
+  display_name: caffgeek
+  first_name: Chad
+  last_name: Hurd
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>If you're like me, you always want Visual Studio opening as Administrator, allowing it to install services, and do whatever you need it to do. But you often forget to right click and "Run as Administrator". Or you just want to be able to use the pinned shortcuts on the task bar. It's really amazingly simple to make it always run as an administrator, just follow these simple steps:</p>
+<ol>
+<li><em>Right Click</em> on "<strong>devenv.exe</strong>" in Explorer
+</li>
+<li><em>Click</em> "<strong>Troubleshoot compatibility</strong>"
+</li>
+<li><em>Click</em> "<strong>Troubleshoot program</strong>"
+</li>
+<li><em>Check</em> "<strong>The program requires additional permissions</strong>"
+</li>
+<li><em>Click</em> "<strong>Next</strong>"
+</li>
+<li><em>Click</em> "<strong>Test the program...</strong>". It should launch Visual Studio as Administrator
+</li>
+<li><em>Click</em> "<strong>Next</strong>"
+</li>
+<li><em>Click</em> "<strong>Yes, save these settings for this program</strong>"
+</li>
+<li><em>Click</em> "<strong>Close the troubleshooter</strong>"
+</li>
+</ol>
+<p>You can revert by following the same steps, but unchecking "The program requires additional permissions"</p>

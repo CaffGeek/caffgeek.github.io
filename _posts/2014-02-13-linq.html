@@ -1,0 +1,38 @@
+---
+layout: post
+title: LINQ
+date: 2014-02-13 09:29:36.000000000 -06:00
+categories: []
+tags: []
+status: draft
+type: post
+published: false
+meta:
+  _edit_last: '1'
+author:
+  login: gibble
+  email: chad.hurd@gcsquared.com
+  display_name: caffgeek
+  first_name: Chad
+  last_name: Hurd
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Interesting find with Entity Framework today. It likely applies to NHibernate as well.<br />
+[2/12/2014 4:43:44 PM] Mike Sigsworth: If you have a query that reuses the same navigation property more than once in the query or projection, use a "let" statement to create an inline variable.<br />
+[2/12/2014 4:46:21 PM | Edited 4:47:08 PM] Mike Sigsworth: For example:</p>
+<p>from c in db.Customers<br />
+select new {<br />
+   c.Name,<br />
+   c.Address.City,<br />
+   c.Address.State<br />
+}</p>
+<p>This will cause two LEFT OUTER JOINs on the Address table to be generated in the SQL. But using the following code just generates one JOIN:</p>
+<p>from c in db.Customers<br />
+let address = c.Address<br />
+select new {<br />
+   c.Name,<br />
+   address.City,<br />
+   address.State<br />
+}<br />
+[2/12/2014 4:46:41 PM] Mike Sigsworth: Query performance will be dramatically improved.</p>

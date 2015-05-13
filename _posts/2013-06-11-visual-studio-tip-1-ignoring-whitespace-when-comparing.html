@@ -1,0 +1,40 @@
+---
+layout: post
+title: 'Visual Studio Tip #1: Ignoring Whitespace when Comparing'
+date: 2013-06-11 13:31:35.000000000 -05:00
+categories:
+- Development
+tags:
+- ".NET"
+- Visual Studio
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  NYSEmailSent: '1'
+author:
+  login: gibble
+  email: chad.hurd@gcsquared.com
+  display_name: caffgeek
+  first_name: Chad
+  last_name: Hurd
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>When comparing files, it's frustrating when the default compare, doesn't ignore whitespace, and many differences are caused by spaces vs tabs.</p>
+<p>Solve it, by adjusting the parameters DiffMerge uses.</p>
+<p>In Visual Studio: </p>
+<ol>
+<li>Tools->Options</li>
+<li>Source Control->Visual Studio Team Foundation Server</li>
+<li>Click the Configure User Tools button.</li>
+</ol>
+<p>Now add an item with the following settings.</p>
+<ul>
+<li>Extension : .*</li>
+<li>Operation : Compare</li>
+<li>Command : C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\diffmerge.exe</li>
+<li> Or: C:\<strong>Program Files (x86)</strong>\Microsoft Visual Studio 10.0\Common7\IDE\diffmerge.exe</li>
+<li>Arguments : %1 %2 %6 %7 %5 /ignorespace</li>
+</ul>

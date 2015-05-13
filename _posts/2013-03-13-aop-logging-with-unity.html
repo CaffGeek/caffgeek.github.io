@@ -1,0 +1,106 @@
+---
+layout: post
+title: AOP - Logging with Unity
+date: 2013-03-13 07:17:10.000000000 -05:00
+categories:
+- Development
+tags:
+- ".NET"
+- AOP
+- Logging
+- Unity
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+author:
+  login: gibble
+  email: chad.hurd@gcsquared.com
+  display_name: caffgeek
+  first_name: Chad
+  last_name: Hurd
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I couple months ago I was tasked with adding logging to an application we are developing.  Now, the typical way people handle this, is with a call to "<code>Logger.Log</code>" wherever they want to log that an activity took place.  However, this relies on the programmers memory, and while the original team members may know and remember to keep up this practice.  The new guy on the team may not.  And this is where this technique really starts to break down.  Logging is a cross cutting feature.  We can't keep all the code in one place, because it's called from all over the application.  </p>
+<p>The solution, is AOP (<a href="http://en.wikipedia.org/wiki/Aspect-oriented_programming" title="Aspect Oriented Programming" target="_blank">Aspect Oriented Programming</a>). Since we were using <a href="http://unity.codeplex.com/releases/view/31277" title="Unity" target="_blank">Unity</a>, it's quite simple to intercept calls based on an interface. There is more it's capable of, but the issue I had was I couldn't find a simple, "hello world" example. Everything felt the need to over complicate the example.</p>
+<p>First things first, on your project, right click, Manage NuGet packages and add Unity Interception Extension.</p>
+<p>Second: Config changes</p>
+<pre lang="xml">
+<?xml version="1.0"?>
+<configuration>
+    <configsections>
+        <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration" />
+    </configsections>
+    <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+      <sectionextension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension, Microsoft.Practices.Unity.Interception.Configuration" />
+      
+      <container>
+        <extension type="Interception" />
+
+        <register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
+          <interceptor type="InterfaceInterceptor" />
+          <interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly" />
+        </register>
+      </container>
+    </unity>
+</configuration>
+</pre>
+<p>Third: Create Behavior</p>
+<pre lang="csharp">
+   public class LoggerBehavior : IInterceptionBehavior
+    {
+        public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
+        {
+            var stopwatch = new Stopwatch();
+            
+            var logger = LogManager.GetLogger(input.MethodBase.ReflectedType);
+
+            var declaringType = input.MethodBase.DeclaringType;
+            var className = declaringType != null ? declaringType.Name : string.Empty;
+            var methodName = input.MethodBase.Name;
+            var generic = declaringType != null && declaringType.IsGenericType
+                              ? string.Format("<{0}>", string.Join<type>(", ", declaringType.GetGenericArguments()))
+                              : string.Empty;
+            
+            var argumentWriter = new StringWriter();
+            for (var i = 0; i < input.Arguments.Count; i++)
+            {
+                var argument = input.Arguments[i];
+                var argumentInfo = input.Arguments.GetParameterInfo(i);
+                argument.Dump(argumentInfo.Name, argumentWriter);
+            }
+            var methodCall = string.Format("{0}{1}.{2}\n{3}", className, generic, methodName, argumentWriter);
+
+            logger.InfoFormat(@"Entering {0}", methodCall);
+            
+            stopwatch.Start();
+            var returnMessage = getNext()(input, getNext);
+            stopwatch.Stop();
+
+            logger.InfoFormat(@"Exited {0} after {1}ms", methodName, stopwatch.ElapsedMilliseconds);
+            
+            return returnMessage;
+        }
+
+        public IEnumerable<type> GetRequiredInterfaces()
+        {
+            return Type.EmptyTypes;
+        }
+
+        public bool WillExecute
+        {
+            get { return true; }
+        }
+    }
+</type></type></pre>
+<p>That's it.  One simple class that does the logging.  And a config change to mark what interfaces you want logged.</p>
+<pre lang="csharp">
+        <register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
+          <interceptor type="InterfaceInterceptor" />
+          <interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly" />
+        </register>
+</pre>
+<p>This config change will run the <code>LoggerBehavior</code> on the methods defined in <code>LoggingTest.Namespace.IInterfaceToLog</code>.  If you want to log the methods on more interfaces, just add another <code>register</code> node to the config. While you still need to add these manually.  You do it at the interface level, rather than the method level.  AND you can add/change what is logged <strong>after</strong> compiling.</p>
+<p>There is more you can do, check the <a href="http://unity.codeplex.com/" title="Unity" target="_blank">Unity</a> codeplex page.</p>

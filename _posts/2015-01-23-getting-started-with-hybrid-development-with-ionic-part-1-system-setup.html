@@ -1,0 +1,54 @@
+---
+layout: post
+title: 'Getting started with Hybrid development with Ionic - Part 1: System Setup'
+date: 2015-01-23 23:37:52.000000000 -06:00
+categories:
+- Android
+- Development
+- Javascript
+- Mobile
+tags: []
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  NYSEmailSent: '1'
+author:
+  login: gibble
+  email: chad.hurd@gcsquared.com
+  display_name: caffgeek
+  first_name: Chad
+  last_name: Hurd
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>So, let's just dive in and get the dev machine setup. We are going to be using <a href="http://cordova.apache.org/">Apache Cordova</a>, <a href="http://ionicframework.com/">Ionic</a>, and <a href="https://angularjs.org/">AngularJS</a> frameworks. And we'll get <a href="http://jasmine.github.io/2.1/introduction.html">Jasmine</a> and <a href="http://karma-runner.github.io/0.12/index.html">Karma</a> setup for testing. We will also use npm (node package manager) to install these libraries, so let's get that installed first.</p>
+<p>Install nodejs using the install link at <a title="nodejs" href="http://nodejs.org/">nodejs.org</a>. Then let's ensure we have the latest version by running this <strong>as administrator</strong>.</p>
+<pre lang="powershell">npm install npm -g</pre>
+<p>We also need the Java JDK (not just JRE). That can be downloaded and installed from <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">here</a>. Just follow the instructions, and ensure it's in your PATH when complete.</p>
+<p>Now let's get Apache ANT from <a href="http://ant.apache.org/bindownload.cgi">here</a>, and install it.</p>
+<p>Also required is the <a href="https://developer.android.com/sdk/installing/index.html?pkg=tools">Android SDK</a>. Just follow the instructions, and run the Android SDK Manager to install the latest SDK Platform. Cordova requires the ANDROID_HOME environment variable. This should point to the android-sdk directory.</p>
+<p>Now that we have npm, let's install cordova and ionic <strong>as administrator</strong>.</p>
+<pre lang="powershell">npm install -g cordova
+npm install -g ionic
+</pre>
+<p>Now, navigate to the location you want to create your application. And generate a blank ionic app with</p>
+<pre lang="powershell">cd c:\source\
+ionic start helloworld blank
+</pre>
+<p><strong>NOTE:</strong> I had a problem here, I received the following error: "Unable to add plugins. Perhaps your version of Cordova is too old. Try updating (npm install -g cordova), removing this project folder, and trying again. (CLI v1.3.2)". However, nothing I did solved the problem. Turns out, for some reason, my helloworld/config.xml was blank. You can fetch a new <a href="https://github.com/driftyco/ionic-app-base/blob/master/config.xml">config.xml here</a>, replace the empty one, and things should start working.</p>
+<p>Open the helloworld folder and let's add the android platform, and run the blank app</p>
+<pre lang="powershell">cd helloworld 
+ionic platform add android
+ionic serve
+</pre>
+<p><a href="http://caffeinatedgeek.ca/wp-content/uploads/2015/01/ionic_serve.png"><img src="assets/ionic_serve-300x63.png" alt="ionic_serve" width="300" height="63" class="aligncenter size-medium wp-image-361" /></a></p>
+<p>Or connect your android device by usb, and load the application on it with</p>
+<pre lang="powershell">ionic run android
+</pre>
+<p>You can also run it in the Android emulator, but I don't recommend it, as it's slooooooow.</p>
+<pre lang="powershell">ionic build android
+ionic emulate android
+</pre>
+<p>Next we'll start adding some code and tests.</p>

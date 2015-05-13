@@ -25,7 +25,7 @@ So, let's just dive in and get the dev machine setup. We are going to be using [
 
 Install nodejs using the install link at [nodejs.org](http://nodejs.org/ "nodejs"). Then let's ensure we have the latest version by running this **as administrator**.
 
-{% highligh powershell %}npm install npm -g{% endhighlight %}
+{% highlight powershell %}npm install npm -g{% endhighlight %}
 
 We also need the Java JDK (not just JRE). That can be downloaded and installed from [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html). Just follow the instructions, and ensure it's in your PATH when complete.
 
@@ -35,13 +35,13 @@ Also required is the [Android SDK](https://developer.android.com/sdk/installing/
 
 Now that we have npm, let's install cordova and ionic **as administrator**.
 
-{% highligh powershell %}npm install -g cordova
+{% highlight powershell %}npm install -g cordova
 npm install -g ionic
 {% endhighlight %}
 
 Now, navigate to the location you want to create your application. And generate a blank ionic app with
 
-{% highligh powershell %}cd c:\source\
+{% highlight powershell %}cd c:\source\
 ionic start helloworld blank
 {% endhighlight %}
 
@@ -49,21 +49,21 @@ ionic start helloworld blank
 
 Open the helloworld folder and let's add the android platform, and run the blank app
 
-{% highligh powershell %}cd helloworld 
+{% highlight powershell %}cd helloworld 
 ionic platform add android
 ionic serve
 {% endhighlight %}
 
-[![ionic_serve](assets/ionic_serve-300x63.png)](http://caffeinatedgeek.ca/wp-content/uploads/2015/01/ionic_serve.png)
+[![ionic_serve](/assets/ionic_serve-300x63.png)](/assets/ionic_serve-300x63.png)
 
 Or connect your android device by usb, and load the application on it with
 
-{% highligh powershell %}ionic run android
+{% highlight powershell %}ionic run android
 {% endhighlight %}
 
 You can also run it in the Android emulator, but I don't recommend it, as it's slooooooow.
 
-{% highligh powershell %}ionic build android
+{% highlight powershell %}ionic build android
 ionic emulate android
 {% endhighlight %}
 

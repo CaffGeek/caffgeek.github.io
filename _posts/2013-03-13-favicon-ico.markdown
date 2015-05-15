@@ -16,8 +16,6 @@ author:
   email: chad.hurd@gcsquared.com
   display_name: caffgeek
   first_name: Chad
-  last_name: Hurd
-
-  
+  last_name: Hurd 
 ---
-<p>No more 404s from your browsers trying to download a favicon!  Now, a simple one exists.  So if you have the site bookmarked, you should now see a steaming cup of caffeine.</p>
+No more 404s from your browsers trying to download a favicon!  Now, a simple one exists.  So if you have the site bookmarked, you should now see a steaming cup of caffeine.

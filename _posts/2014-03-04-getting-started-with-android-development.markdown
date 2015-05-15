@@ -24,7 +24,7 @@ Last fall I purchased a [Nexus 7 (2013)](http://www.amazon.com/gp/product/B00DVF
 
 [![aide-devices](/assets/aide-devices-300x200.png)](/assets/aide-devices.png)
 
-It comes with the code for  Tetris, a Clock Widget, and a Hello World app.  I started hacking together my first native app.  And tried to run it.  Of course, it crashed. So, Google, and I download a few logcat readers.  None seem to work. I do some more research and learn that as of the Jelly Bean update, apps can no longer read each others logs. This was added for security reasons, as some applications (facebook) were logging passwords in the log file, meaning, a maliscous app could easily read your facebook password from it's logfile. Which now means, you need to connect your tablet to a pc to read the logs, and determine why your application is crashing.  At first, this annoyed me.  It took a while to get that work, and I'll show you how. But if you plan to deploy your app, you're going to want to have log files sent to you anyway. After showing you how to read logcat from your PC, I'll show you how to write your first app in AIDE, that will email (or change it to write to a file you can open) it's logcat after it crashes. It will allow you to develop, without the need for a PC.
+It comes with the code for Tetris, a Clock Widget, and a Hello World app.  I started hacking together my first native app.  And tried to run it.  Of course, it crashed. So, Google, and I download a few logcat readers.  None seem to work. I do some more research and learn that as of the Jelly Bean update, apps can no longer read each others logs. This was added for security reasons, as some applications (facebook) were logging passwords in the log file, meaning, a maliscous app could easily read your facebook password from it's logfile. Which now means, you need to connect your tablet to a pc to read the logs, and determine why your application is crashing.  At first, this annoyed me.  It took a while to get that work, and I'll show you how. But if you plan to deploy your app, you're going to want to have log files sent to you anyway. After showing you how to read logcat from your PC, I'll show you how to write your first app in AIDE, that will email (or change it to write to a file you can open) it's logcat after it crashes. It will allow you to develop, without the need for a PC.
 
 First, you need to enable developer mode on your tablet. It used to just be in the settings, but now it's more complicated.  Open your settings and scroll down to "About tablet" (phone, or whatever).  Scroll down to the Build number, and click it 7 times.
 
@@ -56,7 +56,7 @@ Open a command prompt, go to the directory you just extracted adb.exe into, and 
 
 If nothing is attached, you many need to change the Connection type with your computer, on your Android device, go to Settings -> Storage, and click the elipses in the top right, you'll come to this screen, try changing between the two modes, one should work. On mine it was Camera, others have reported differently.
 
-[![USB Computer Connection](/assets/USB-Computer-Connection-300x187.png)](http://caffeinatedgeek.ca/wp-content/uploads/2014/03/USB-Computer-Connection.png)
+[![USB Computer Connection](/assets/USB-Computer-Connection-300x187.png)](/assets/USB-Computer-Connection.png)
 
 If all is working correctly, you should be able to dump the logcat contents with the command
 

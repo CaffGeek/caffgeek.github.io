@@ -54,61 +54,61 @@ Second: Config changes
 Third: Create Behavior
 
 {% highlight csharp %}   
-	public class LoggerBehavior : IInterceptionBehavior
-    {
-        public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
-        {
-            var stopwatch = new Stopwatch();
+public class LoggerBehavior : IInterceptionBehavior
+{
+	public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
+	{
+		var stopwatch = new Stopwatch();
 
-            var logger = LogManager.GetLogger(input.MethodBase.ReflectedType);
+		var logger = LogManager.GetLogger(input.MethodBase.ReflectedType);
 
-            var declaringType = input.MethodBase.DeclaringType;
-            var className = declaringType != null ? declaringType.Name : string.Empty;
-            var methodName = input.MethodBase.Name;
-            var generic = declaringType != null && declaringType.IsGenericType
-                              ? string.Format("<{0}>", string.Join<type>(", ", declaringType.GetGenericArguments()))
-                              : string.Empty;
+		var declaringType = input.MethodBase.DeclaringType;
+		var className = declaringType != null ? declaringType.Name : string.Empty;
+		var methodName = input.MethodBase.Name;
+		var generic = declaringType != null && declaringType.IsGenericType
+						  ? string.Format("<{0}>", string.Join<type>(", ", declaringType.GetGenericArguments()))
+						  : string.Empty;
 
-            var argumentWriter = new StringWriter();
-            for (var i = 0; i < input.Arguments.Count; i++)
-            {
-                var argument = input.Arguments[i];
-                var argumentInfo = input.Arguments.GetParameterInfo(i);
-                argument.Dump(argumentInfo.Name, argumentWriter);
-            }
-            var methodCall = string.Format("{0}{1}.{2}\n{3}", className, generic, methodName, argumentWriter);
+		var argumentWriter = new StringWriter();
+		for (var i = 0; i < input.Arguments.Count; i++)
+		{
+			var argument = input.Arguments[i];
+			var argumentInfo = input.Arguments.GetParameterInfo(i);
+			argument.Dump(argumentInfo.Name, argumentWriter);
+		}
+		var methodCall = string.Format("{0}{1}.{2}\n{3}", className, generic, methodName, argumentWriter);
 
-            logger.InfoFormat(@"Entering {0}", methodCall);
+		logger.InfoFormat(@"Entering {0}", methodCall);
 
-            stopwatch.Start();
-            var returnMessage = getNext()(input, getNext);
-            stopwatch.Stop();
+		stopwatch.Start();
+		var returnMessage = getNext()(input, getNext);
+		stopwatch.Stop();
 
-            logger.InfoFormat(@"Exited {0} after {1}ms", methodName, stopwatch.ElapsedMilliseconds);
+		logger.InfoFormat(@"Exited {0} after {1}ms", methodName, stopwatch.ElapsedMilliseconds);
 
-            return returnMessage;
-        }
+		return returnMessage;
+	}
 
-        public IEnumerable <type>GetRequiredInterfaces()
-        {
-            return Type.EmptyTypes;
-        }
+	public IEnumerable <type>GetRequiredInterfaces()
+	{
+		return Type.EmptyTypes;
+	}
 
-        public bool WillExecute
-        {
-            get { return true; }
-        }
-    }
+	public bool WillExecute
+	{
+		get { return true; }
+	}
+}
 {% endhighlight %}
 
 That's it. One simple class that does the logging. And a config change to mark what interfaces you want logged.
 
 {% highlight xml %}        
-	<register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
-          <interceptor type="InterfaceInterceptor">
-          	<interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly"></interceptionbehavior> 
-		  </interceptor>
-	</register>
+<register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
+	  <interceptor type="InterfaceInterceptor">
+		<interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly"></interceptionbehavior> 
+	  </interceptor>
+</register>
 {% endhighlight %}
 
 This config change will run the `LoggerBehavior` on the methods defined in `LoggingTest.Namespace.IInterfaceToLog`. If you want to log the methods on more interfaces, just add another `register` node to the config. While you still need to add these manually. You do it at the interface level, rather than the method level. AND you can add/change what is logged **after** compiling.

@@ -20,8 +20,7 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-
-  
 ---
-<p>The Vendor-Client Relationship</p>
-<p><a title="http://www.youtube.com/watch?v=R2a8TRSgzZY" href="http://www.youtube.com/watch?v=R2a8TRSgzZY" target="_blank">http://www.youtube.com/watch?v=R2a8TRSgzZY</a></p>
+The Vendor-Client Relationship
+
+[http://www.youtube.com/watch?v=R2a8TRSgzZY](http://www.youtube.com/watch?v=R2a8TRSgzZY "http://www.youtube.com/watch?v=R2a8TRSgzZY")

@@ -17,8 +17,6 @@ author:
   email: chad.hurd@gcsquared.com
   display_name: caffgeek
   first_name: Chad
-  last_name: Hurd
-
-  
+  last_name: Hurd 
 ---
-<p>The site has gone mobile.  It's looking good on the BB, in fact, that's where this post is being written. How's it work from your mobile device?</p>
+The site has gone mobile.  It's looking good on the BB, in fact, that's where this post is being written. How's it work from your mobile device?

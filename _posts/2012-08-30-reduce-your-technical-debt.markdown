@@ -26,7 +26,7 @@ So, on with the examples of what not to do.
 
 This is a new take on the normal misuse of booleans
 
-{% highlight vb %}        
+{% highlight vbnet %}        
 Select Case isBoolean
 	Case True
 		myValue = 10
@@ -42,7 +42,7 @@ Why not write it clearly in one line?
 
 or in c# (which I prefer)
 
-{% highlight vb %}	myValue = isBoolean ? 10 : 99; 
+{% highlight vbnet %}	myValue = isBoolean ? 10 : 99; 
 {% endhighlight %}
 
 If your code is FULL of hardcoded constants, put them in a config or the database or use enums! There should be NO [MAGIC NUMBERS](http://en.wikipedia.org/wiki/Magic_number_(programming)).
@@ -76,7 +76,7 @@ While the intent is clear, it's not easily maintainable, it's much simpler if yo
 
 {% highlight csharp %}       
 // acceptableExceptions loaded in a config, not inline
-// acceptableExceptions = new [] { ".zg", ".rur", ".dat" }
+// acceptableExceptions = new \[\] { ".zg", ".rur", ".dat" }
 foreach (var extension in acceptableExtensions) {
 	var extensionStartsAt = fileName.IndexOf(extension)
 	if (extensionStartsAt > 0) {
@@ -90,7 +90,7 @@ Use the right data types. Don't store "True" and "False" or "Y" and "N" in a str
 
 Most importantly, know your framework. Stop reinventing the wheel. More than likely the framework has covered all the edge cases you'll miss, and it's been veted by thousands of programmers actively using the framework. There are methods to work with directories and files. Path.Combine is a good one to know. There are methods to parse dates, and convert strings of numbers into integers (decimals, etc). These methods can return wether it was successful ([TryParse](http://msdn.microsoft.com/en-us/library/f02979c7.aspx)) while returning the parse result to prevent a need for exception handling. Which reminds me, [exceptions should be exceptional](http://blogs.msdn.com/b/marklon/archive/2005/09/21/472343.aspx). If you can check for it, do so first, and ensure the exception can't happen. If you can't check, but can't handle it, there's no need to catch it.
 
-{% highlight vb %}    
+{% highlight vbnet %}    
 Function returnProperTime(ByVal strDate As String) As String
 	Dim strHour As String
 	Dim strMinute As String
@@ -106,7 +106,7 @@ End Function
 
 Should be using [ParseExact](http://msdn.microsoft.com/en-us/library/w2sa9yss.aspx) (and should be using proper types)
 
-{% highlight vb %}    var dateTime = Date.ParseExact(strDate, "HHmmss", CulterInfo.InvariantCulter)
+{% highlight vbnet %}    var dateTime = Date.ParseExact(strDate, "HHmmss", CulterInfo.InvariantCulter)
 var formattedTime = dateTime.ToString("HH:mm:ss")
 {% endhighlight %}
 

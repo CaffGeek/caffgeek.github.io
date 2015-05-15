@@ -26,12 +26,13 @@ So, on with the examples of what not to do.
 
 This is a new take on the normal misuse of booleans
 
-{% highlight vb %}        Select Case isBoolean
-            Case True
-                myValue = 10
-            Case False
-                myValue = 99
-        End Select
+{% highlight vb %}        
+Select Case isBoolean
+	Case True
+		myValue = 10
+	Case False
+		myValue = 99
+End Select
 {% endhighlight %}
 
 Why not write it clearly in one line?

@@ -17,13 +17,17 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-
-  
 ---
-<p>Typically that phrase is a negative thing.  We use it when talking to high school students.  How they need to prepare for the real world, where they won't be coddled and protected by their parents.</p>
-<p>However, sometimes we end up in a place that's the opposite.  And the "real world" is a good wonderful place.</p>
-<p>I am now employed at a great company.  It's only been a week, but so far so good.  It's a strange feeling not worrying all day about every little thing you do.</p>
-<p>Having blockages removed quickly and efficiently.  </p>
-<p>Being able to work.</p>
-<p>I'm once again able to enjoy what I do, and have started a few side projects.</p>
-<p>It's great being in the Real World.</p>
+Typically that phrase is a negative thing. We use it when talking to high school students. How they need to prepare for the real world, where they won't be coddled and protected by their parents.
+
+However, sometimes we end up in a place that's the opposite. And the "real world" is a good wonderful place.
+
+I am now employed at a great company. It's only been a week, but so far so good. It's a strange feeling not worrying all day about every little thing you do.
+
+Having blockages removed quickly and efficiently.
+
+Being able to work.
+
+I'm once again able to enjoy what I do, and have started a few side projects.
+
+It's great being in the Real World.

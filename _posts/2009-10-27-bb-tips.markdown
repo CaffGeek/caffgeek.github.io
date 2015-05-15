@@ -18,10 +18,8 @@ author:
   display_name: caffgeek
   first_name: Chad
   last_name: Hurd
-
-  
 ---
-<p>ALT-CAP-H will bring up your "Help Me!" page with pin, platform, version, mac, signal, etc<br />
-Typing "MYPIN" in a message will enter your pin for you.<br />
-ALT-"NMLL" will toggle between signal strength bars and numbers<br />
-ALT-CAP-DEL will reboot your blackberry</p>
+ALT-CAP-H will bring up your "Help Me!" page with pin, platform, version, mac, signal, etc  
+ Typing "MYPIN" in a message will enter your pin for you.  
+ ALT-"NMLL" will toggle between signal strength bars and numbers  
+ ALT-CAP-DEL will reboot your blackberry

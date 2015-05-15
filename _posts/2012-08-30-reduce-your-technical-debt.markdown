@@ -36,7 +36,7 @@ This is a new take on the normal misuse of booleans
 
 Why not write it clearly in one line?
 
-{% highlight csharop %}	myValue = IF(isBoolean, 10, 99)
+{% highlight csharp %}	myValue = IF(isBoolean, 10, 99)
 {% endhighlight %}
 
 or in c# (which I prefer)
@@ -54,7 +54,7 @@ If you are copy/pasting in your app, you're doing something wrong. If the functi
 
 A recent example of copy/paste programming
 
-{% highlight csharop %}
+{% highlight csharp %}
 if (fileName.IndexOf(".zg") > 0) {
 	partFileName = fileName.SubString(0, fileName.IndexOf(".zg"))
 	bolExtentionRecognized = true
@@ -73,7 +73,7 @@ if (fileName.IndexOf(".dat") > 0) {
 
 While the intent is clear, it's not easily maintainable, it's much simpler if you just had to maintain the list of extensions, like this
 
-{% highlight csharop %}       
+{% highlight csharp %}       
 // acceptableExceptions loaded in a config, not inline
 // acceptableExceptions = new [] { ".zg", ".rur", ".dat" }
 foreach (var extension in acceptableExtensions) {

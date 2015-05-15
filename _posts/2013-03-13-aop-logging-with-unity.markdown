@@ -30,23 +30,31 @@ First things first, on your project, right click, Manage NuGet packages and add 
 Second: Config changes
 
 {% highlight xml %}
- <configuration><configsections>
-
-<section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration">
-
-    <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
-      <sectionextension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension, Microsoft.Practices.Unity.Interception.Configuration"><container>
-        <extension type="Interception"><register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
-          <interceptor type="InterfaceInterceptor">
-          <interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly"></interceptionbehavior> </interceptor></register></extension> </container></sectionextension> </unity>
-
-</section>
-
-</configsections></configuration>{% endhighlight %}
+<configuration>
+   <configsections>
+      <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration">
+         <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+            <sectionextension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension, Microsoft.Practices.Unity.Interception.Configuration">
+               <container>
+                  <extension type="Interception">
+                     <register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
+                        <interceptor type="InterfaceInterceptor">
+                           <interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly" />
+                        </interceptor>
+                     </register>
+                  </extension>
+               </container>
+            </sectionextension>
+         </unity>
+      </section>
+   </configsections>
+</configuration>
+{% endhighlight %}
 
 Third: Create Behavior
 
-{% highlight csharp %}   public class LoggerBehavior : IInterceptionBehavior
+{% highlight csharp %}   
+	public class LoggerBehavior : IInterceptionBehavior
     {
         public IMethodReturn Invoke(IMethodInvocation input, GetNextInterceptionBehaviorDelegate getNext)
         {
@@ -90,13 +98,17 @@ Third: Create Behavior
         {
             get { return true; }
         }
-    }</type> </type>{% endhighlight %}
+    }
+{% endhighlight %}
 
 That's it. One simple class that does the logging. And a config change to mark what interfaces you want logged.
 
-{% highlight csharp %}        <register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
+{% highlight xml %}        
+	<register type="LoggingTest.Namespace.IInterfaceToLog, LoggingTest.Namespace.Assembly">
           <interceptor type="InterfaceInterceptor">
-          <interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly"></interceptionbehavior> </interceptor></register>
+          	<interceptionbehavior type="LoggingTest.Namespace.Loggers.LoggerBehavior, LoggingTest.Namespace.Assembly"></interceptionbehavior> 
+		  </interceptor>
+	</register>
 {% endhighlight %}
 
 This config change will run the `LoggerBehavior` on the methods defined in `LoggingTest.Namespace.IInterfaceToLog`. If you want to log the methods on more interfaces, just add another `register` node to the config. While you still need to add these manually. You do it at the interface level, rather than the method level. AND you can add/change what is logged **after** compiling.

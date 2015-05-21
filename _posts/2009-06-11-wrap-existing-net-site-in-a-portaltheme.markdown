@@ -21,12 +21,17 @@ author:
   first_name: Chad
   last_name: Hurd 
 ---
-<p>Recently I ran into the problem where we were attempting to have all of our websites run inside of a portal.  Where you could easily jump from one app to another, without having to go back and forth, or always back to a home page with links.</p>
-<p>What we wanted was a header menu added to ALL of our websites that handled some authentication, and showed what websites you had access to, and allowed you to easily navigate between them, as though they were one large application.</p>
-<p>Now, rewriting all these applications would be a nightmare.  There was no time.  Even if the goal was simply to modify the master pages of each app...some of which were very dated, and didn't have the luxury of master pages.</p>
-<p>So with a little research on the Page Adapter Class and some creative use of the .browsers file, I came up with an unobtrusive method to easily add our new portal to all existing applications, without any recompiling.</p>
-<p>First, lets create our Portal Page Adapter project.  Add a new class file named PortalPageAdapter.cs</p>
-<pre lang="csharp">
+Recently I ran into the problem where we were attempting to have all of our websites run inside of a portal. Where you could easily jump from one app to another, without having to go back and forth, or always back to a home page with links.
+
+What we wanted was a header menu added to ALL of our websites that handled some authentication, and showed what websites you had access to, and allowed you to easily navigate between them, as though they were one large application.
+
+Now, rewriting all these applications would be a nightmare. There was no time. Even if the goal was simply to modify the master pages of each app...some of which were very dated, and didn't have the luxury of master pages.
+
+So with a little research on the Page Adapter Class and some creative use of the .browsers file, I came up with an unobtrusive method to easily add our new portal to all existing applications, without any recompiling.
+
+First, lets create our Portal Page Adapter project. Add a new class file named PortalPageAdapter.cs
+
+{% highlight csharp %}
 namespace PortalPageAdapter
 {
 	using System;
@@ -90,10 +95,13 @@ namespace PortalPageAdapter
 		}
 	}
 }
-</webcontrol></webcontrol></htmlform></string></string></pre>
-<p>Now that we have our portal written, with a trick up it's sleeve to hide/show content based upon the users roles, let's look at how we add it to an existing website.</p>
-<p>In the App_Browsers folder, add a file called default.browsers</p>
-<pre lang="xml">
+{% endhighlight %}
+
+Now that we have our portal written, with a trick up it's sleeve to hide/show content based upon the users roles, let's look at how we add it to an existing website.
+
+In the App_Browsers folder, add a file called default.browsers
+
+{% highlight xml %}
 <browsers>
 	<browser refid="Default">
 		<controladapters>
@@ -101,13 +109,16 @@ namespace PortalPageAdapter
 		</controladapters>
 	</browser>
 </browsers>
-</pre>
-<p>And add the compiled dll of our PortalPageAdapter class to the bin folder.</p>
-<p>Navigate to your website and the first thing you see should be the line "PORTAL GOES HERE", which you can modify in the Portal Page Adapter class to create whatever content you would like.  How you generate the html is up to you.  Be it includes, databases, xml/xsl, whatever.  Get creative.</p>
-<p>Now, the last thing, is, the 'trick' that has been programmed in, on any aspx page, you can add the "role" attribute to any WebControl (asp:whatever) and it will be rendered (or not) based upon the roles loaded by the PortalPageAdapter class.</p>
-<pre lang="html">
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PageAdapter._Default" %>
+{% endhighlight %}
 
+And add the compiled dll of our PortalPageAdapter class to the bin folder.
+
+Navigate to your website and the first thing you see should be the line "PORTAL GOES HERE", which you can modify in the Portal Page Adapter class to create whatever content you would like. How you generate the html is up to you. Be it includes, databases, xml/xsl, whatever. Get creative.
+
+Now, the last thing, is, the 'trick' that has been programmed in, on any aspx page, you can add the "role" attribute to any WebControl (asp:whatever) and it will be rendered (or not) based upon the roles loaded by the PortalPageAdapter class.
+
+{% highlight html %}
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="PageAdapter._Default" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -142,7 +153,8 @@ namespace PortalPageAdapter
 	</form>
 </body>
 </html>
+{% endhighlight %}
 
-</pre>
-<p>This would also be a simple way to add an embeded IM client to a series of websites.</p>
-<p>Happy coding.  </p>
+This would also be a simple way to add an embeded IM client to a series of websites.
+
+Happy coding.

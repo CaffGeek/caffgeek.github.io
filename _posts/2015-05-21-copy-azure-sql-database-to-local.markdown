@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: Copy Azure Database to Local Machine
 categories: 
 - Azure

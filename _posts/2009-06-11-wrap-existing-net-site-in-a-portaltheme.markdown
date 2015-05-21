@@ -31,7 +31,7 @@ So with a little research on the Page Adapter Class and some creative use of the
 
 First, lets create our Portal Page Adapter project. Add a new class file named PortalPageAdapter.cs
 
-{% highlight cs %}
+{% highlight csharp %}
 namespace PortalPageAdapter
 {
 	using System;

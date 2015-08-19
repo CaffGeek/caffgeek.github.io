@@ -27,14 +27,15 @@ I was hooked.
 {% endhighlight %}
 
 I don't remember how young I was (under five), but the first time I saw that repeated over and over on the screen, with my name, and nobody repeatedly typing it, a seed was planted. I spent countless hours typing in programs from magazines, and computer books. And countless more hounding my parents to type it for me as they were faster. Games like Face Painter only watered that seed. But it was dormant for a while.  
+ 
  ![Atari 800XL](/assets/800px-Atari-800XL-300x153.jpg "Atari 800XL")
+ 
  After the [Atari 800XL](http://en.wikipedia.org/wiki/Atari_8-bit_family#Newer_XL_machines "Atari 800XL") was no longer a viable computer and had been packed away, I made do without a computer for many years. Unimaginable now. Pretty common in the 80's. Then, when I was in junior high, fertilizer was added. My parents were able to afford a 286 computer. My dad liked to take things apart and see how they work. So learning hardware and how to upgrade them quickly followed. I built my own computer from spare parts. Shortly after a friend introduced me to Turbo Pascal.  
+ 
  ![Turbo Pascal](/assets/tp5-300x159.png "Turbo Pascal")
+ 
  I spent time writing all kinds of things, little paint programs. Terrain tile models for games that I never built. Small little games, reminiscent of those I played on the Atari as a kid. Even writing my own 3d routines to draw, rotate, and shade objects. Some of these I recently uncovered on some 3.5" diskettes. Maybe I'll find a drive and see if I can view my first forays into programming (scary they may be). From then on, there was little doubt about what I would eventually do for a living. And here I am today. Still playing. Still learning. Still amazed.
- ![3.5" diskettes](http://en.wikipedia.org/wiki/Floppy_disk#3+1.E2.81.842-inch_floppy_disk_.28.22Microfloppy.22.29 "3.5")
-
-[
+ 
+ ![3.5" diskettes](/assets/3.5disks.jpg)
 
 **Where were you? What's your story?**
-
-](http://en.wikipedia.org/wiki/Floppy_disk#3+1.E2.81.842-inch_floppy_disk_.28.22Microfloppy.22.29 "3.5")

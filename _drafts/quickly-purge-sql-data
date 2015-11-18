@@ -1,0 +1,21 @@
+public static void PurgeData()
+{
+    using (var conn = new SqlConnection(ConnectionString))
+    {
+        conn.Open();
+
+        var cmdText = new StringBuilder();
+        cmdText.AppendLine("EXEC sp_MSForEachTable 'DISABLE TRIGGER ALL ON ?'");
+        cmdText.AppendLine("EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'");
+        cmdText.AppendLine("EXEC sp_MSForEachTable 'DELETE FROM ?'");
+        cmdText.AppendLine("EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'");
+        cmdText.AppendLine("EXEC sp_MSForEachTable 'ENABLE TRIGGER ALL ON ?'");
+
+        using (var sqlCmd = new SqlCommand(cmdText.ToString(), conn))
+        {
+            sqlCmd.ExecuteNonQuery();   
+        }
+
+        conn.Close();
+    }
+}
